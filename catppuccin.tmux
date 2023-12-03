@@ -28,7 +28,7 @@ setw() {
 
 main() {
   local theme
-  theme="$(get_tmux_option "@catppuccin_flavour" "mocha")"
+  theme="$(get_tmux_option "@catppuccin_flavour" "frappe")"
 
   # Aggregate all commands in one array
   local tmux_commands=()
@@ -98,11 +98,13 @@ main() {
 
   local show_directory_in_window_status
   #readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
-  readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_bg] #W "
+  #readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_bg] #W "
+  readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_bg] #(basename #{pane_current_path} | sed 's/$/                /' | cut -c 1-14) "
 
   local show_directory_in_window_status_current
   #readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} "
-  readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_pink] #I #[fg=$thm_fg,bg=$thm_gray] #W "
+  readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_pink] #I #[fg=$thm_fg,bg=$thm_gray] #(basename #{pane_current_path} | sed 's/$/                /' | cut -c 1-14) "
+  #readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_pink] #I #[fg=$thm_fg,bg=$thm_gray] #W "
   #readonly show_directory_in_window_status_current="#[fg=colour232,bg=$thm_orange] #I #[fg=colour255,bg=colour237] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
 
   local show_window_in_window_status
